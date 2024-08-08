@@ -23,6 +23,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <RootNamespace>NetSparkleUpdater.UI.WPF</RootNamespace>
 	<Nullable>enable</Nullable>
+	<Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)' == 'net462'">
 	<LangVersion>9.0</LangVersion>
@@ -35,7 +36,14 @@
     <DebugType>full</DebugType>
     <DocumentationFile>..\bin\Debug\NetSparkle.UI.NetFramework.WPF\NetSparkle.UI.WPF.xml</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DebugType>full</DebugType>
+    <DocumentationFile>..\bin\Debug\NetSparkle.UI.NetFramework.WPF\NetSparkle.UI.WPF.xml</DocumentationFile>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DocumentationFile>..\bin\Release\NetSparkle.UI.WPF\NetSparkle.UI.WPF.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <DocumentationFile>..\bin\Release\NetSparkle.UI.WPF\NetSparkle.UI.WPF.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net462' ">

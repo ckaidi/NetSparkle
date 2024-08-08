@@ -24,6 +24,7 @@
     <TrimMode>partial</TrimMode>
     <IsAotCompatible>true</IsAotCompatible>
     <Nullable>enable</Nullable>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'net462'">
     <LangVersion>8.0</LangVersion>
@@ -37,7 +38,17 @@
     <DocumentationFile>..\bin\Release\NetSparkle\NetSparkle.xml</DocumentationFile>
     <DefineConstants>TRACE;NET462;NETFULL;NETFRAMEWORK</DefineConstants>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net462|x64'">
+    <OutputPath>..\bin\Release\NetSparkle\</OutputPath>
+    <DocumentationFile>..\bin\Release\NetSparkle\NetSparkle.xml</DocumentationFile>
+    <DefineConstants>TRACE;NET462;NETFULL;NETFRAMEWORK</DefineConstants>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net462|AnyCPU'">
+    <OutputPath>..\bin\Debug\NetSparkle\</OutputPath>
+    <DocumentationFile>..\bin\Debug\NetSparkle\NetSparkle.xml</DocumentationFile>
+    <DefineConstants>DEBUG;TRACE;NET462;NETFULL;NETFRAMEWORK</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net462|x64'">
     <OutputPath>..\bin\Debug\NetSparkle\</OutputPath>
     <DocumentationFile>..\bin\Debug\NetSparkle\NetSparkle.xml</DocumentationFile>
     <DefineConstants>DEBUG;TRACE;NET462;NETFULL;NETFRAMEWORK</DefineConstants>
@@ -47,7 +58,17 @@
     <DocumentationFile>..\bin\Release\NetSparkle\NetSparkle.xml</DocumentationFile>
     <DefineConstants>TRACE;NETCORE;NETSTANDARD</DefineConstants>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|x64'">
+    <OutputPath>..\bin\Release\NetSparkle\</OutputPath>
+    <DocumentationFile>..\bin\Release\NetSparkle\NetSparkle.xml</DocumentationFile>
+    <DefineConstants>TRACE;NETCORE;NETSTANDARD</DefineConstants>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
+    <OutputPath>..\bin\Debug\NetSparkle\</OutputPath>
+    <DocumentationFile>..\bin\Debug\NetSparkle\NetSparkle.xml</DocumentationFile>
+    <DefineConstants>DEBUG;TRACE;NETCORE;NETSTANDARD</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|x64'">
     <OutputPath>..\bin\Debug\NetSparkle\</OutputPath>
     <DocumentationFile>..\bin\Debug\NetSparkle\NetSparkle.xml</DocumentationFile>
     <DefineConstants>DEBUG;TRACE;NETCORE;NETSTANDARD</DefineConstants>
@@ -57,30 +78,60 @@
 		<DocumentationFile>..\bin\Release\NetSparkle\NetSparkle.xml</DocumentationFile>
 		<DefineConstants>TRACE;NETCORE;NET6</DefineConstants>
 	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0|x64'">
+	  <OutputPath>..\bin\Release\NetSparkle\</OutputPath>
+	  <DocumentationFile>..\bin\Release\NetSparkle\NetSparkle.xml</DocumentationFile>
+	  <DefineConstants>TRACE;NETCORE;NET6</DefineConstants>
+	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0|AnyCPU'">
 		<OutputPath>..\bin\Debug\NetSparkle\</OutputPath>
 		<DocumentationFile>..\bin\Debug\NetSparkle\NetSparkle.xml</DocumentationFile>
 		<DefineConstants>DEBUG;TRACE;NETCORE;NET6</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0|x64'">
+	  <OutputPath>..\bin\Debug\NetSparkle\</OutputPath>
+	  <DocumentationFile>..\bin\Debug\NetSparkle\NetSparkle.xml</DocumentationFile>
+	  <DefineConstants>DEBUG;TRACE;NETCORE;NET6</DefineConstants>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0|AnyCPU'">
 		<OutputPath>..\bin\Release\NetSparkle\</OutputPath>
 		<DocumentationFile>..\bin\Release\NetSparkle\NetSparkle.xml</DocumentationFile>
 		<DefineConstants>TRACE;NETCORE;NET7</DefineConstants>
 	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0|x64'">
+	  <OutputPath>..\bin\Release\NetSparkle\</OutputPath>
+	  <DocumentationFile>..\bin\Release\NetSparkle\NetSparkle.xml</DocumentationFile>
+	  <DefineConstants>TRACE;NETCORE;NET7</DefineConstants>
+	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0|AnyCPU'">
 		<OutputPath>..\bin\Debug\NetSparkle\</OutputPath>
 		<DocumentationFile>..\bin\Debug\NetSparkle\NetSparkle.xml</DocumentationFile>
 		<DefineConstants>DEBUG;TRACE;NETCORE;NET7</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0|x64'">
+	  <OutputPath>..\bin\Debug\NetSparkle\</OutputPath>
+	  <DocumentationFile>..\bin\Debug\NetSparkle\NetSparkle.xml</DocumentationFile>
+	  <DefineConstants>DEBUG;TRACE;NETCORE;NET7</DefineConstants>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0|AnyCPU'">
 		<OutputPath>..\bin\Release\NetSparkle\</OutputPath>
 		<DocumentationFile>..\bin\Release\NetSparkle\NetSparkle.xml</DocumentationFile>
 		<DefineConstants>TRACE;NETCORE;NET8</DefineConstants>
 	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0|x64'">
+	  <OutputPath>..\bin\Release\NetSparkle\</OutputPath>
+	  <DocumentationFile>..\bin\Release\NetSparkle\NetSparkle.xml</DocumentationFile>
+	  <DefineConstants>TRACE;NETCORE;NET8</DefineConstants>
+	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0|AnyCPU'">
 		<OutputPath>..\bin\Debug\NetSparkle\</OutputPath>
 		<DocumentationFile>..\bin\Debug\NetSparkle\NetSparkle.xml</DocumentationFile>
 		<DefineConstants>DEBUG;TRACE;NETCORE;NET8</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0|x64'">
+	  <OutputPath>..\bin\Debug\NetSparkle\</OutputPath>
+	  <DocumentationFile>..\bin\Debug\NetSparkle\NetSparkle.xml</DocumentationFile>
+	  <DefineConstants>DEBUG;TRACE;NETCORE;NET8</DefineConstants>
 	</PropertyGroup>
   <!-- .NET 4.6.2 references, compilation flags and build options -->
   <ItemGroup Condition=" '$(TargetFramework)' == 'net462' ">
@@ -111,6 +162,6 @@
 	<None Include="..\..\LICENSE.md" Pack="true" PackagePath="\" />
 	<None Include="..\..\README.md" Pack="true" PackagePath="\" />
 	<None Include="..\..\UPGRADING.md" Pack="true" PackagePath="\" />
-	<None Include="ArtWork\software-update-available.png" Pack="true" PackagePath="\"/>
+	<None Include="ArtWork\software-update-available.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 </Project>
