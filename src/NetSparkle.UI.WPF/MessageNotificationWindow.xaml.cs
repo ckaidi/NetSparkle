@@ -9,7 +9,7 @@ namespace NetSparkleUpdater.UI.WPF
     /// Window that shows a single message to the user (usually an error) regarding
     /// a software update.
     /// </summary>
-    public partial class MessageNotificationWindow : Window
+    public partial class MessageNotificationWindow
     {
         /// <summary>
         /// Construct the notification window for the message notification with the default

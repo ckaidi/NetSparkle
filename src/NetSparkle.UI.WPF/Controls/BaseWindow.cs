@@ -7,7 +7,7 @@ namespace NetSparkleUpdater.UI.WPF.Controls
     /// Base <see cref="Window"/> class for most WPF update windows.
     /// Provides utilities and common code for windows that are shown.
     /// </summary>
-    public class BaseWindow : Window
+    public class BaseWindow : Xceed.Wpf.Toolkit.Window
     {
         /// <summary>
         /// Whether or not this Window is on the main thread or not

@@ -118,31 +118,31 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DefaultUIFactory_ShowUnknownInstallerFormatMessageText" xml:space="preserve">
-    <value>Updater not supported, please execute {0} manually</value>
+    <value>不支持更新程序，请手动执行{0}</value>
   </data>
   <data name="DefaultUIFactory_ShowVersionIsUpToDateMessage" xml:space="preserve">
-    <value>Your current version is up to date.</value>
+    <value>您当前的版本是最新的。</value>
   </data>
   <data name="DefaultUIFactory_ErrorTitle" xml:space="preserve">
-    <value>Error!</value>
+    <value>错误!</value>
   </data>
   <data name="DefaultUIFactory_MessageTitle" xml:space="preserve">
-    <value>Info</value>
+    <value>提示</value>
   </data>
   <data name="DefaultUIFactory_ShowVersionIsSkippedByUserRequestMessage" xml:space="preserve">
-    <value>You have elected to skip this version.</value>
+    <value>您已选择跳过此版本。</value>
   </data>
   <data name="DefaultUIFactory_ShowCannotDownloadAppcastMessage" xml:space="preserve">
-    <value>Sorry, either you aren't connected to the internet, or our server is having a problem.</value>
+    <value>对不起，不是您没有连接到互联网，就是我们的服务器有问题。</value>
   </data>
   <data name="DefaultUIFactory_ToastCallToAction" xml:space="preserve">
-    <value>More information</value>
+    <value>更多的信息</value>
   </data>
   <data name="DefaultUIFactory_ToastMessage" xml:space="preserve">
-    <value>New Version Available</value>
+    <value>新版本可用</value>
   </data>
   <data name="DefaultUIFactory_ShowDownloadErrorMessage" xml:space="preserve">
-    <value>Sorry, there was a problem attempting to download the update
+    <value>对不起，在尝试下载更新时出现问题
 
 {0}</value>
   </data>

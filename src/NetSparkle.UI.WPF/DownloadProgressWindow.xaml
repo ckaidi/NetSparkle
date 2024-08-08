@@ -5,10 +5,13 @@
                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                      xmlns:local="clr-namespace:NetSparkleUpdater.UI.WPF"
                      xmlns:controls="clr-namespace:NetSparkleUpdater.UI.WPF.Controls"
+                     xmlns:xceed="http://schemas.xceed.com/wpf/xaml/toolkit"
                      mc:Ignorable="d"
                      Width="600"
                      MaxWidth="600"
-                     Title="Software Update"
+                     IsTopmostButton="False"
+                     IsMinimizeButton="False"
+                     Title="软件更新"
                      ResizeMode="NoResize"
                      SizeToContent="Height"
                      x:Name="DownloadProgressWindowControl"
@@ -16,7 +19,13 @@
                      d:DesignWidth="800" 
                      WindowStartupLocation="CenterScreen">
     <controls:BaseWindow.Resources>
-        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary
+                 Source="pack://application:,,,/Xceed.Wpf.Toolkit;component/Style/ButtonStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        </ResourceDictionary>
     </controls:BaseWindow.Resources>
     <Grid Margin="5"
           x:Name="MainGrid">
@@ -56,16 +65,17 @@
                FontWeight="Bold"
                FontSize="20"
                Margin="5,5,5,5"/>
-        <ProgressBar Name="ProgressBar"
-                     Grid.Row="2"
-                     Grid.Column="0"
-                     Grid.ColumnSpan="2"
-                     Minimum="0"
-                     Maximum="100"
-                     IsIndeterminate="False"
-                     Height="20"
-                     Value="{Binding DownloadProgress}"
-                     Margin="5,0,5,0" />
+        <xceed:ProgressBar 
+              CornRadius="5"
+              Grid.Row="2"
+              Grid.Column="0"
+              Grid.ColumnSpan="2"
+              Minimum="0"
+              Maximum="100"
+              IsIndeterminate="False"
+              Height="10"
+              Value="{Binding DownloadProgress}"
+              Margin="5,0,5,0" />
         <TextBlock TextWrapping="Wrap"
                    Name="ErrorMessage"
                    Grid.Row="3"

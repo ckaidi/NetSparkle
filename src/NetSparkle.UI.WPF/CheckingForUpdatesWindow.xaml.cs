@@ -9,7 +9,7 @@ namespace NetSparkleUpdater.UI.WPF
     /// 
     /// Window that shows while NetSparkle is checking for updates.
     /// </summary>
-    public partial class CheckingForUpdatesWindow : Window, ICheckingForUpdates
+    public partial class CheckingForUpdatesWindow : Xceed.Wpf.Toolkit.Window, ICheckingForUpdates
     {
         /// <inheritdoc/>
         public event EventHandler? UpdatesUIClosing;
