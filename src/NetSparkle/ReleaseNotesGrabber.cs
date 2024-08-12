@@ -154,10 +154,10 @@ namespace NetSparkleUpdater
                 // TODO: could we optimize this by doing multiple downloads at once?
                 var releaseNotes = await GetReleaseNotes(castItem, _sparkle, cancellationToken);
                 sb.Append(string.Format((hasAddedFirstItem ? "<br/>" : "") + ReleaseNotesTemplate,
-                                        castItem.Version,
-                                        castItem.PublicationDate != DateTime.MinValue && 
+                                        castItem.Version?.Split('+')[0],
+                                        castItem.PublicationDate != DateTime.MinValue &&
                                         castItem.PublicationDate != DateTime.MaxValue
-                                            ? castItem.PublicationDate.ToString(DateFormat) 
+                                            ? castItem.PublicationDate.ToString(DateFormat)
                                             : "", // was dd MMM yyyy
                                         releaseNotes,
                                         (latestVersion.Version?.Equals(castItem.Version) ?? false) ? "#ABFF82" : "#AFD7FF"));
@@ -215,7 +215,7 @@ namespace NetSparkleUpdater
 
             // download release notes
             _logger?.PrintMessage("Downloading release notes for {0} at {1}", item.Version ?? "[Unknown version]", item.ReleaseNotesLink ?? "[Unknown release notes link]");
-            string notes = item.ReleaseNotesLink != null 
+            string notes = item.ReleaseNotesLink != null
                 ? await DownloadReleaseNotes(item.ReleaseNotesLink, cancellationToken, sparkle)
                 : "";
             _logger?.PrintMessage("Done downloading release notes for {0}", item.Version ?? "[Unknown version]");
@@ -230,7 +230,7 @@ namespace NetSparkleUpdater
                 if (ChecksReleaseNotesSignature &&
                     _sparkle != null &&
                     _sparkle.SignatureVerifier != null &&
-                    Utilities.IsSignatureNeeded(_sparkle.SignatureVerifier.SecurityMode, 
+                    Utilities.IsSignatureNeeded(_sparkle.SignatureVerifier.SecurityMode,
                         _sparkle.SignatureVerifier.HasValidKeyInformation(), false) &&
                     _sparkle.SignatureVerifier.VerifySignatureOfString(item.ReleaseNotesSignature ?? "", notes) == ValidationResult.Invalid)
                 {

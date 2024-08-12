@@ -13,6 +13,8 @@
                      IsMinimizeButton="False"
                      Title="软件更新"
                      ResizeMode="NoResize"
+                     BorderBrush="LightGray"
+                     BorderThickness="1"
                      SizeToContent="Height"
                      x:Name="DownloadProgressWindowControl"
                      d:DesignHeight="250"

@@ -6,15 +6,32 @@
                  xmlns:local="clr-namespace:NetSparkleUpdater.UI.WPF"
                  xmlns:cont="clr-namespace:NetSparkleUpdater.UI.WPF.Controls"
                  mc:Ignorable="d"
+                 BorderBrush="LightGray"
+                 BorderThickness="1"
                  x:Name="UpdateAvailableWindowControl"
-                 Title="Software Update"
+                 Title="软件更新"
+                 IsTopmostButton="False"
+                 Topmost="True"
                  MinWidth="500"
                  MinHeight="225"
                  Width="700"
                  Height="600"
                  WindowStartupLocation="CenterScreen">
     <cont:BaseWindow.Resources>
-        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Xceed.Wpf.Toolkit;component/Themes/Generic.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/Xceed.Wpf.Toolkit;component/Style/DataGridStyle.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/Xceed.Wpf.Toolkit;component/Style/ButtonStyle.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/Xceed.Wpf.Toolkit;component/Style/ListView.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/Xceed.Wpf.Toolkit;component/Style/ScrollViewerStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        </ResourceDictionary>
     </cont:BaseWindow.Resources>
     <Grid Name="MainGrid">
         <Grid.ColumnDefinitions>
@@ -33,7 +50,7 @@
                Grid.Column="0"
                Source="{Binding ElementName=UpdateAvailableWindowControl, Path=Icon}"
                VerticalAlignment="Top"
-               HorizontalAlignment="Left"
+               HorizontalAlignment="Right"
                Width="48"
                Height="48"
                Margin="10,10,0,0" />
@@ -60,7 +77,7 @@
         <Button Name="SkipButton"
                 IsEnabled="{Binding IsSkipEnabled}"
                 Visibility="{Binding IsSkipVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
-                Content="Skip this version"
+                Content="跳过这个版本"
                 Command="{Binding Skip}"
                 Margin="10,10,0,10"
                 Padding="5"
@@ -77,13 +94,13 @@
             <Button Name="RemindMeLaterButton"
                     IsEnabled="{Binding IsRemindMeLaterEnabled}"
                     Visibility="{Binding IsRemindMeLaterVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
-                    Content="Remind me later"
+                    Content="稍候提醒我"
                     HorizontalAlignment="Right"
                     Command="{Binding RemindMeLater}"
                     Margin="0,0,8,0"
                     Padding="5" />
             <Button Name="DownloadInstallButton"
-                    Content="Download/Install"
+                    Content="下载并安装"
                     Command="{Binding DownloadInstall}"
                     Margin="0,0,0,0"
                     Padding="5" />

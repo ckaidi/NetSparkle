@@ -210,8 +210,8 @@ namespace NetSparkleUpdater.UI.WPF.ViewModels
             AppCastItem? item = items.FirstOrDefault();
 
             // TODO: string translations
-            TitleHeaderText = string.Format("A new version of {0} is available.", item?.AppName ?? "the application");
-            var downloadInstallText = isUpdateAlreadyDownloaded ? "install" : "download";
+            TitleHeaderText = string.Format("检测到新版本 {0}", item?.AppName ?? "应用");
+            var downloadInstallText = isUpdateAlreadyDownloaded ? "安装" : "下载";
             if (item != null)
             {
                 var versionString = "";
@@ -226,8 +226,8 @@ namespace NetSparkleUpdater.UI.WPF.ViewModels
                 {
                     versionString = "?";
                 }
-                InfoText = string.Format("{0} {3} is now available (you have {1}). Would you like to {2} it now?", item.AppName, versionString, downloadInstallText, 
-                    item.Version);
+                InfoText = string.Format("{0} 检测到新版本 {3} (当前版本{1}), 需要立即进行更新{2}嘛?", item.AppName, versionString.Split("+")[0], downloadInstallText,
+                    item.Version.Split("+")[0]);
             }
             else
             {

@@ -14,6 +14,7 @@ using NetSparkleUpdater.Configurations;
 using NetSparkleUpdater.AppCastHandlers;
 using NetSparkleUpdater.AssemblyAccessors;
 using System.Text;
+
 #if NETSTANDARD || NET6 || NET7 || NET8
 using System.Runtime.InteropServices;
 #endif
@@ -114,7 +115,7 @@ namespace NetSparkleUpdater
         {
             _latestDownloadedUpdateInfo = null;
             _hasAttemptedFileRedownload = false;
-            
+
             UIFactory = factory;
             SignatureVerifier = signatureVerifier;
             LogWriter = new LogWriter();
@@ -251,19 +252,22 @@ namespace NetSparkleUpdater
                 if (_configuration == null)
                 {
 #if NETSTANDARD || NET6 || NET7 || NET8
-                        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                    {
+                        _configuration = new RegistryConfiguration(new AsmResolverAccessor(_appReferenceAssembly));
+                    }
+                    else
+                    {
+                        try
                         {
-                            _configuration = new RegistryConfiguration(new AsmResolverAccessor(_appReferenceAssembly));
+                            _configuration = new JSONConfiguration(new AsmResolverAccessor(_appReferenceAssembly));
                         }
-                        else
+                        catch (Exception e)
                         {
-                            try {
-                                _configuration = new JSONConfiguration(new AsmResolverAccessor(_appReferenceAssembly));
-                            } catch (Exception e) {
-                                LogWriter?.PrintMessage("Unable to create JSONConfiguration object: {0}", e.Message);
-                                _configuration = new DefaultConfiguration(new AsmResolverAccessor(_appReferenceAssembly));
-                            }
+                            LogWriter?.PrintMessage("Unable to create JSONConfiguration object: {0}", e.Message);
+                            _configuration = new DefaultConfiguration(new AsmResolverAccessor(_appReferenceAssembly));
                         }
+                    }
 #else
                         _configuration = new RegistryConfiguration(new AsmResolverAccessor(_appReferenceAssembly));
 #endif
@@ -433,8 +437,8 @@ namespace NetSparkleUpdater
         /// <summary>
         /// The object responsable for downloading update files for your application
         /// </summary>
-        public IUpdateDownloader UpdateDownloader 
-        { 
+        public IUpdateDownloader UpdateDownloader
+        {
             get
             {
                 if (_updateDownloader == null)
@@ -897,8 +901,8 @@ namespace NetSparkleUpdater
 
                 if (!string.IsNullOrWhiteSpace(filename))
                 {
-                    string tmpPath = TmpDownloadFilePath == null || string.IsNullOrWhiteSpace(TmpDownloadFilePath) 
-                        ? Path.GetTempPath() 
+                    string tmpPath = TmpDownloadFilePath == null || string.IsNullOrWhiteSpace(TmpDownloadFilePath)
+                        ? Path.GetTempPath()
                         : TmpDownloadFilePath;
 
                     // Creates all directories and subdirectories in the specific path unless they already exist.
@@ -956,8 +960,9 @@ namespace NetSparkleUpdater
                     // so that the user can actually perform the install
                     _actionToRunOnProgressWindowShown = () =>
                     {
-                        CallFuncConsideringUIThreads(() => { 
-                            DownloadFinished?.Invoke(_itemBeingDownloaded, _downloadTempFileName); 
+                        CallFuncConsideringUIThreads(() =>
+                        {
+                            DownloadFinished?.Invoke(_itemBeingDownloaded, _downloadTempFileName);
                         });
                         bool shouldInstallAndRelaunch = UserInteractionMode == UserInteractionMode.DownloadAndInstall;
                         if (shouldInstallAndRelaunch)
@@ -1017,8 +1022,8 @@ namespace NetSparkleUpdater
                         Uri url = Utilities.GetAbsoluteURL(item.DownloadLink, AppCastUrl);
                         LogWriter?.PrintMessage("Starting to download {0} to {1}", item.DownloadLink, _downloadTempFileName);
                         UpdateDownloader?.StartFileDownload(url, _downloadTempFileName);
-                        CallFuncConsideringUIThreads(() => 
-                        { 
+                        CallFuncConsideringUIThreads(() =>
+                        {
                             DownloadStarted?.Invoke(item, _downloadTempFileName);
                         });
                     };
@@ -1064,7 +1069,7 @@ namespace NetSparkleUpdater
                 }
                 ProgressWindow = null;
             }
-            Action showSparkleDownloadUI = () => {};
+            Action showSparkleDownloadUI = () => { };
             if (ProgressWindow == null && UIFactory != null && !IsDownloadingSilently())
             {
                 // create the form
@@ -1297,8 +1302,8 @@ namespace NetSparkleUpdater
             else
             {
                 LogWriter?.PrintMessage("Signature is valid. File successfully downloaded!");
-                CallFuncConsideringUIThreads(() => 
-                { 
+                CallFuncConsideringUIThreads(() =>
+                {
                     DownloadFinished?.Invoke(_itemBeingDownloaded, _downloadTempFileName);
                     bool shouldInstallAndRelaunch = UserInteractionMode == UserInteractionMode.DownloadAndInstall;
                     if (shouldInstallAndRelaunch)

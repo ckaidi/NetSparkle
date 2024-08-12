@@ -133,7 +133,7 @@ namespace NetSparkleUpdater.UI.WPF
             {
                 viewModel.ReleaseNotesGrabber = ReleaseNotesGrabberOverride;
             }
-            viewModel.Initialize(sparkle, updates, isUpdateAlreadyDownloaded, ReleaseNotesHTMLTemplate ?? "", 
+            viewModel.Initialize(sparkle, updates, isUpdateAlreadyDownloaded, ReleaseNotesHTMLTemplate ?? "",
                 AdditionalReleaseNotesHeaderHTML ?? "", ReleaseNotesDateTimeFormat);
             ProcessWindowAfterInit?.Invoke(window, this);
             return window;
@@ -171,7 +171,7 @@ namespace NetSparkleUpdater.UI.WPF
         /// <inheritdoc/>
         public virtual void ShowUnknownInstallerFormatMessage(SparkleUpdater sparkle, string downloadFileName)
         {
-            ShowMessage(Resources.DefaultUIFactory_MessageTitle, 
+            ShowMessage(Resources.DefaultUIFactory_MessageTitle,
                 string.Format(Resources.DefaultUIFactory_ShowUnknownInstallerFormatMessageText, downloadFileName));
         }
 
