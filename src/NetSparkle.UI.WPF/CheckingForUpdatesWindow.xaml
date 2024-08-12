@@ -51,6 +51,7 @@
                Grid.Column="0"
                Content="正在检查更新..."
                HorizontalAlignment="Center"
+               VerticalAlignment="Center"
                FontWeight="Bold"
                FontSize="24" />
         <xceed:ProgressBar 
@@ -59,7 +60,7 @@
             Grid.Column="0"
             IsIndeterminate="True"
             Height="5"
-            Margin="10,5,10,0" />
+            Margin="10,15,10,0" />
         <Button Grid.Row="2"
                 Grid.Column="0"
                 Content="取消"
