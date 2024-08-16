@@ -233,20 +233,17 @@ namespace NetSparkleUpdater.UI.WPF
 
         private void ShowMessage(string title, string message)
         {
-            var messageWindow = new MessageNotificationWindow(new MessageNotificationWindowViewModel(message))
+            var messageWindow = new Xceed.Wpf.Toolkit.MessageBox(message)
             {
                 Title = title,
-                Icon = _applicationIcon
+                Icon = _applicationIcon,
+                WindowStartupLocation = WindowStartupLocation.CenterScreen
             };
-            messageWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             ProcessWindowAfterInit?.Invoke(messageWindow, this);
             messageWindow.ShowDialog();
         }
 
         /// <inheritdoc/>
-        public void Shutdown(SparkleUpdater sparkle)
-        {
-            System.Windows.Application.Current.Shutdown();
-        }
+        public void Shutdown(SparkleUpdater sparkle) => Application.Current.Shutdown();
     }
 }
