@@ -2,7 +2,7 @@
   <PropertyGroup>
     <ProjectGuid>{6915843C-7947-4268-B569-6F5684651DF4}</ProjectGuid>
     <UseWPF>true</UseWPF>
-	<TargetFrameworks>net8.0-windows</TargetFrameworks>
+	<TargetFrameworks>net472</TargetFrameworks>
     <AssemblyTitle>NetSparkleUpdater.UI.WPF</AssemblyTitle>
     <Product>NetSparkleUpdater.UI.WPF</Product>
     <Copyright>Copyright © 2024</Copyright>
@@ -22,7 +22,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <RootNamespace>NetSparkleUpdater.UI.WPF</RootNamespace>
-	<Nullable>enable</Nullable>
+	<Nullable>disable</Nullable>
 	<Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)' == 'net462'">
@@ -57,7 +57,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Xceed.Wpf.Toolkit\Xceed.Wpf.Toolkit.csproj" />
     <ProjectReference Include="..\NetSparkle\NetSparkle.csproj" />
   </ItemGroup>
 	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0-windows'">
@@ -73,6 +72,11 @@
     <None Include="..\..\LICENSE.md" Pack="true" PackagePath="\" />
     <None Include="..\..\README.md" Pack="true" PackagePath="\" />
     <None Include="..\NetSparkle\ArtWork\software-update-available.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>..\..\..\Xceed.Wpf.Toolkit\bin\Debug\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">

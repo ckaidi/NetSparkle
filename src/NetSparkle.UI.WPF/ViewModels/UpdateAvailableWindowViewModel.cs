@@ -17,10 +17,10 @@ namespace NetSparkleUpdater.UI.WPF.ViewModels
         private List<AppCastItem> _updates;
 
         private CancellationToken? _cancellationToken;
-        private CancellationTokenSource? _cancellationTokenSource;
+        private CancellationTokenSource _cancellationTokenSource;
 
-        private string? _titleHeaderText;
-        private string? _infoText;
+        private string _titleHeaderText;
+        private string _infoText;
 
         private bool _isRemindMeLaterEnabled;
         private bool _isSkipEnabled;
@@ -47,18 +47,18 @@ namespace NetSparkleUpdater.UI.WPF.ViewModels
         /// <summary>
         /// Interface object for the object that will be displaying the release notes
         /// </summary>
-        public IReleaseNotesDisplayer? ReleaseNotesDisplayer { get; set; }
+        public IReleaseNotesDisplayer ReleaseNotesDisplayer { get; set; }
 
         /// <summary>
         /// Interface object for the object that can handle user responses to the update that
         /// is being shown to the user
         /// </summary>
-        public IUserRespondedToUpdateCheck? UserRespondedHandler { get; set; }
+        public IUserRespondedToUpdateCheck UserRespondedHandler { get; set; }
 
         /// <summary>
         /// Object responsible for downloading and formatting markdown release notes for display in HTML
         /// </summary>
-        public ReleaseNotesGrabber? ReleaseNotesGrabber { get; set; }
+        public ReleaseNotesGrabber ReleaseNotesGrabber { get; set; }
 
         /// <summary>
         /// Header text to show to the user. Usually something along the lines of
@@ -207,7 +207,7 @@ namespace NetSparkleUpdater.UI.WPF.ViewModels
                 };
             }
 
-            AppCastItem? item = items.FirstOrDefault();
+            AppCastItem item = items.FirstOrDefault();
 
             // TODO: string translations
             TitleHeaderText = string.Format("检测到新版本 {0}", item?.AppName ?? "应用");
@@ -226,8 +226,8 @@ namespace NetSparkleUpdater.UI.WPF.ViewModels
                 {
                     versionString = "?";
                 }
-                InfoText = string.Format("{0} 检测到新版本 {3} (当前版本{1}), 需要立即进行更新{2}嘛?", item.AppName, versionString.Split("+")[0], downloadInstallText,
-                    item.Version.Split("+")[0]);
+                InfoText = string.Format("{0} 检测到新版本 {3} (当前版本{1}), 需要立即进行更新{2}嘛?", item.AppName, versionString.Split('+')[0], downloadInstallText,
+                    item.Version.Split('+')[0]);
             }
             else
             {
@@ -247,7 +247,7 @@ namespace NetSparkleUpdater.UI.WPF.ViewModels
 
         private async void LoadReleaseNotes(List<AppCastItem> items)
         {
-            AppCastItem? latestVersion = items.OrderByDescending(p => p.Version).FirstOrDefault();
+            AppCastItem latestVersion = items.OrderByDescending(p => p.Version).FirstOrDefault();
             string releaseNotes = ReleaseNotesGrabber != null
                 ? await ReleaseNotesGrabber.DownloadAllReleaseNotes(
                     items,

@@ -11,7 +11,7 @@ namespace NetSparkleUpdater.UI.WPF.ViewModels
     /// </summary>
     public class DownloadProgressWindowViewModel : ChangeNotifier
     {
-        private AppCastItem? _itemToDownload;
+        private AppCastItem _itemToDownload;
 
         private bool _isDownloading;
         private bool _didDownloadAnything;
@@ -48,7 +48,7 @@ namespace NetSparkleUpdater.UI.WPF.ViewModels
         /// Setting this property changes the <see cref="DownloadingTitle"/>
         /// property
         /// </summary>
-        public AppCastItem? ItemToDownload
+        public AppCastItem ItemToDownload
         {
             get => _itemToDownload;
             set 

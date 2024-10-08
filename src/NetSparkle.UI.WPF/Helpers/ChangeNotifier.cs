@@ -14,7 +14,7 @@ namespace NetSparkleUpdater.UI.WPF.Helpers
         /// <summary>
         /// Event to listen to property changes on some object
         /// </summary>
-        public event PropertyChangedEventHandler? PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         /// Notify the listener that a property of the given name has changed

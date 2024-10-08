@@ -12,7 +12,7 @@ namespace NetSparkleUpdater.UI.WPF
     public partial class CheckingForUpdatesWindow : Xceed.Wpf.Toolkit.Window, ICheckingForUpdates
     {
         /// <inheritdoc/>
-        public event EventHandler? UpdatesUIClosing;
+        public event EventHandler UpdatesUIClosing;
 
         /// <summary>
         /// Create the window that tells the user that SparkleUpdater is checking
@@ -24,7 +24,7 @@ namespace NetSparkleUpdater.UI.WPF
             Closing += CheckingForUpdatesWindow_Closing;
         }
 
-        private void CheckingForUpdatesWindow_Closing(object? sender, System.ComponentModel.CancelEventArgs e)
+        private void CheckingForUpdatesWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Closing -= CheckingForUpdatesWindow_Closing;
             UpdatesUIClosing?.Invoke(sender, new EventArgs());
